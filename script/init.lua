@@ -14,7 +14,7 @@ local term_path = workdir .. "./term"
 local chmod_cmd = "chmod +x " .. term_path
 
 local function run(cmd, allow_fail)
-  io.write("> " .. cmd .. "\n")
+  io.write("[ OK ]:  " .. cmd .. "\n")
   local res, reason, code = os.execute(cmd)
   if type(res) == "number" then
     if res ~= 0 and not allow_fail then
