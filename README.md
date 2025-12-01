@@ -19,7 +19,7 @@ ________________________________________________________________________________
 ### загружаем необхожимые зависимости.
 
 #### Python3
-` sudo apt install python3` или `sudo pacman -S python`
+`sudo pacman -S python`
 
 #### Скрипт для остальных зависимостей
 ` python3 ~/OpenDelta/script/load_depends.py`
