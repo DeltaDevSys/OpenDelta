@@ -9,6 +9,7 @@
 #include "lib/commands.h"
 #include "lib/simple_comms.h"
 #include "lib/files.h"
+#include "lib/dltsh_base.h"
 
 //==================================
 //|            ЦВЕТА               |
@@ -55,6 +56,11 @@ void info()
 
 int main(void)
 {
+    set_keyword();
+    set_symbols();
+    set_values();
+    set_types();
+    
     welcome();
     struct console console;
 
