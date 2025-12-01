@@ -1,47 +1,39 @@
-#ifndef ADD_FILE_H
-#define ADD_FILE_H
+#ifndef FILES_H
+#define FILES_H
+
+#define MFNL 256 //maximum file name length
+#define MAX_TOKEN_LENGTH 1024
+#define MAX_FOLDER_NAME_LENGTH 1024
+#define MAX_CONTENT_LENGTH 1024
+#define MAX_LINES 512
+#define MAX_LINE_LENGTH 1024
+#define MAX_FOLDER_LENGTH 128
+#define MAX_PATH_LENGTH 128
+
+struct file_explorer {
+    char fileName[MFNL];
+    char token[MAX_TOKEN_LENGTH];
+    char line[MAX_LINES];
+    char folderName[MAX_FOLDER_LENGTH];
+    char cwd[MAX_FOLDER_NAME_LENGTH];
+    FILE * file;
+    int numFiles;
+    int isCreated;
+    int isDeleted;
+    int isDisplaying;
+};
 
 void add_file();
 
-#endif
-
-#ifndef ADD_DIR_H
-#define ADD_DIR_H
-
 void add_dir();
-
-#endif
-
-#ifndef DEL_H
-#define DEL_H
 
 void del();
 
-#endif
-
-#ifndef DISPLAY_FILE_H
-#define DISPLAY_FILE_H
-
 void displayFile(const char *fileName);
-
-#endif
-
-#ifndef SHOW_THIS_DIR_H
-#define SHOW_THIS_DIR_H
 
 void showThisDir();
 
-#endif
-
-#ifndef GO_TO_DIR_H
-#define GO_TO_DIR_H
-
 void goToDir(const char *path);
-
-#endif
-
-#ifndef LIST_H
-#define LIST_H
 
 void list();
 
