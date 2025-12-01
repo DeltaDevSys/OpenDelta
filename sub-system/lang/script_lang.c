@@ -12,6 +12,8 @@ typedef struct {
     const char *else_keyword[128];
     const char *let_keyword[128];
     const char *func_keyword[128];
+    const char *type_keyword[128];
+    const char *struct_keyword[128];
 } Keywords;
 
 typedef struct {
@@ -23,6 +25,16 @@ typedef struct {
     const char *slash;
     const char *dollar;
 } SpecificSymbols;
+
+typedef struct {
+    const char *double_ampersand_val[128];
+    const char *double_vertical_lines_val[128];
+    const char *plus_value[128];
+    const char *minus_value[128];
+    const char *star_values[128];
+    const char *slash_values[128];
+    const char *dollar_value[128];
+} ValueForSymbols;
 
 typedef struct {
     const char *string_type[MAX_STRING_TYPE_LENGTH];
@@ -41,7 +53,9 @@ void set_keyword()
         .then_keyword = "then",
         .else_keyword = "else",
         .let_keyword = "let",
-        .func_keyword = "func"
+        .func_keyword = "func",
+        .type_keyword = "type",
+        .struct_keyword = "struct"
     };
 }
 
@@ -55,6 +69,19 @@ void set_symbols()
         .star = "*",
         .slash = "/",
         .dollar = "$"
+    };
+}
+
+void set_values()
+{
+    ValueForSymbols values = {
+        .double_ampersand_val = "add condition",
+        .double_vertical_lines_val = "add condition",
+        .plus_value = "сложение",
+        .minus_value = "вычитание",
+        .star_values = "pointer",
+        .slash_values = "path",
+        .dollar_value = "variable"
     };
 }
 
