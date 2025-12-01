@@ -13,8 +13,13 @@ ________________________________________________________________________________
 #### даём права скриптам на запуск.
 ``` bash
   chmod +x ~/OpenDelta/script/init.sh
-  chmod +x ~/OpenDelta/script/init.lua 
+  chmod +x ~/OpenDelta/script/init.lua
+  chmod +x ~/OpenDelta/script/load_depends.py
 ```
+### загружаем необхожимые зависимости.
+` sudo apt install python3` или `sudo pacman -S python`
+` python3 ~/OpenDelta/script/load_depends.py`
+
 ### запускаем (по выбору).
 #### Lua init script.
 ` ~/OpenDelta/script/init.lua `
