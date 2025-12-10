@@ -15,6 +15,7 @@
     #include <stdlib.h>
 #endif
 
+/* colors */
 #define T_RED "\033[38;2;255;0;0m"
 #define T_GREEN "\033[38;2;0;255;0m"
 #define T_BLUE "\033[38;2;0;0;255m"
@@ -23,6 +24,7 @@
 #define T_RESET "\033[0m"
 #define T_MAGENTA "\033[0;35m"
 
+/* constants */
 #define MFNL 256 //maximum file name length
 #define MAX_TOKEN_LENGTH 1024
 #define MAX_FOLDER_NAME_LENGTH 1024
@@ -33,7 +35,6 @@
 #define MAX_PATH_LENGTH 128
 
 struct file_explorer {
-    /*variables*/
     char fileName[MFNL];
     char token[MAX_TOKEN_LENGTH];
     char line[MAX_LINES];
