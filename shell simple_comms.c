@@ -11,12 +11,12 @@
 void help()
 {
     printf("+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+\n");
-    printf("| 1.dlt-fetch: как неофетч, но для нашей ОС.         | 11.help - вывод списка команд и их значение. |\n");
+    printf("| 1.dltinfo: как неофетч, но для нашей ОС.           | 11.help - вывод списка команд и их значение. |\n");
     printf("| 2.calc - калькулятор.                              | 12.quit - выход из dltsh.                    |\n");
-    printf("| 3.list - выводит список файлов в текущем каталоге. | 13.refresh - очистка экрана.                 |\n");
-    printf("| 4.std - показывает путь к текущей директории.      |                                              |\n");
+    printf("| 3.list - выводит список файлов в текущем каталоге. | 13.cls - очистка экрана.                     |\n");
+    printf("| 4.std - показывает путь к текущей директории.      | 14.ver - вывод установленной версии dltsh.   |\n");
     printf("| 5.gtd - переходит в какую-либо папку.              |                                              |\n");
-    printf("| 6.display - выводит содержимое файла.              |                                              |\n");
+    printf("| 6.dcf - выводит содержимое файла.                  |                                              |\n");
     printf("| 7.del - удаление папки или файла.                  |                                              |\n");
     printf("| 8.add - создание файла или каталога.               |                                              |\n");
     printf("| 9.lsf - вывод всех файлов для работы ОС.           |                                              |\n");
@@ -77,12 +77,12 @@ void write_logo()
 
 void welcome()
 {
-    const char frstln[] = ".____________________________.";
-    const char newlin[] = "|                            |";
-    const char scndln[] = "|FFFFFFFFFFFFFFFFFFFFFFFFFFFF|";
-    const char thrdln[] = "|[ Welcome to the DeltaOS!  ]|";
-    const char frthln[] = "|FFFFFFFFFFFFFFFFFFFFFFFFFFFF|";
-    const char endlne[] = "|____________________________|";
+    const char frstln[] = "._____________________________.";
+    const char newlin[] = "|                             |";
+    const char scndln[] = "|FFFFFFFFFFFFFFFFFFFFFFFFFFFFF|";
+    const char thrdln[] = "|[ Welcome to the OpenDelta! ]|";
+    const char frthln[] = "|FFFFFFFFFFFFFFFFFFFFFFFFFFFFF|";
+    const char endlne[] = "|_____________________________|";
 
     printf("%s\n", frstln);
     printf("%s\n", newlin);
