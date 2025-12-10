@@ -18,11 +18,11 @@
 /* constants */
 #define MAX_LINES 512
 #define MAX_LINE_LENGTH 1024
-#define MAX_CONTENT_LENGTH 2048
 #define MAX_ARGUMENT_LENGTH 256
 #define MAX_USER_NAME_LENGTH 128
 #define MAX_OS_TITLE_LANGTH 128
 #define MAX_HOST_NAME_LENGTH 128
+#define MAX_QUANTITY_OF_COMMANDS 256
 
 /* structures */
 typedef struct {
@@ -32,7 +32,7 @@ typedef struct {
     const char *cpu[128];
     const char *gpu[128];
     double disk_memory[32768];
-} UserInfo; 
+} UserInfo;
 
 typedef struct {
     int number_of_versions[16];
@@ -46,6 +46,18 @@ typedef struct {
     const char *open_dlt_sh[128];    
 } Versions;
 
+Versions versions = {
+    .number_of_versions = 16,
+    .phoenix = "phoenix",
+    .signalmann = "signalmann",
+    .teemagnat = "TeeMagnt",
+    .hanz_hanz = "HanzHanz",
+    .iwgnig = "Iwgnig",
+    .neu_delta = "Neu Delta",
+    .deltonium = "Deltonium",
+    .open_dlt_sh = "OpenDltSH"
+};
+
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
@@ -54,9 +66,9 @@ void your_version()
     Versions ver;
     *ver.number_of_versions = 8;
     const char *installed_ver[128];
-    *installed_ver = "v.0.0.0.11-c OpenDltSh\n";
+    *installed_ver = "v.0.0.0.11-c OpenDltSH\n";
     printf(T_CYAN "[installed version dltsh]: %s" T_RESET, *installed_ver);
-    *ver.open_dlt_sh = "v.0.0.0.11-c OpenDltSh\n";
+    *ver.open_dlt_sh = "v.0.0.0.11-c OpenDltSH\n";
     printf(T_CYAN "[actualy dltsh version]: %s" T_RESET, *ver.open_dlt_sh);
 }
 
@@ -150,13 +162,13 @@ void editor()
 
 void print_fetch()
 {
-  	UserInfo user = {
-  	    .user_name = "DeltaDev",
-  	    .host_name = "HpLaptop",
-  	    .os_title = "OpenDelta",
-  	    .cpu = "intel core i5 7200U",
-  	    .gpu = "Radeon M300"
-  	};
+    UserInfo user = {
+  	 .user_name = "DeltaDev",
+  	 .host_name = "HpLaptop",
+  	 .os_title = "OpenDelta",
+  	 .cpu = "intel core i5 7200U",
+         .gpu = "Radeon R5  M330"
+    };
   	
     printf(T_CYAN "        ___               User:        %s\n" T_RESET, *user.user_name);
     printf(T_CYAN "       /  /               ---------------------------\n" T_RESET);
@@ -167,6 +179,7 @@ void print_fetch()
     printf(T_CYAN "  /  /  /\\  \\   \\         terminal:    Termitex\n" T_RESET);
     printf(T_CYAN " /  /  /  \\  \\   \\        host:        %s\n" T_RESET, *user.host_name);
     printf(T_CYAN "/  /  /    \\  \\   \\       cpu:         %s\n" T_RESET, *user.cpu);
-    printf(T_CYAN "\\_/  /______\\  \\__/       gpu:         %s\n" T_RESET, *user.gpu);}
+    printf(T_CYAN "\\_/  /______\\  \\__/       gpu:         %s\n" T_RESET, *user.gpu);
+}
 
 #endif
