@@ -16,6 +16,8 @@ typedef struct {
     const char *func_keyword[128];
     const char *type_keyword[128];
     const char *struct_keyword[128];
+    const char *import_keyword[128];
+    const char *extern_keyword[128];
 } Keywords;
 
 typedef struct {
