@@ -26,7 +26,7 @@ ________________________________________________________________________________
 
 ### запускаем (по выбору).
 #### Lua init script.
-` ~/OpenDelta/script/init.lua `
+` lua ~/OpenDelta/script/init.lua `
 #### ShellScript init script.
 ` ~/OpenDelta/script/init.sh `
 __________________________________________________________________________________
