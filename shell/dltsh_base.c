@@ -1,4 +1,3 @@
-/* constants for types */
 #define MAX_STRING_TYPE_LENGTH 1024
 #define MAX_CHAR_TYPE_LENGTH 512
 #define MAX_INT_TYPE_LENGTH 1024
@@ -14,6 +13,8 @@ typedef struct {
     const char *func_keyword[128];
     const char *type_keyword[128];
     const char *struct_keyword[128];
+    const char *import_keyword[128];
+    const char *extern_keyword[128];
 } Keywords;
 
 typedef struct {
@@ -43,7 +44,6 @@ typedef struct {
     const char *bool_type[MAX_BOOL_TYPE_LENGTH];
 } TypesNames; 
 
-
 void set_keyword() 
 {
     Keywords keywords = {
@@ -55,7 +55,9 @@ void set_keyword()
         .let_keyword = "let",
         .func_keyword = "func",
         .type_keyword = "type",
-        .struct_keyword = "struct"
+        .struct_keyword = "struct",
+        .import_keyword = "import",
+        .extern_keyword = "extern"
     };
 }
 
