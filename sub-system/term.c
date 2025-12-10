@@ -36,24 +36,6 @@ struct console {
     char *folderName[MAX_PATH_LENGTH];
 };
 
-typedef struct {
-    const char *user_name[MAX_USER_NAME_LENGTH];
-    const char *os_title[MAX_OS_TITLE_LANGTH];
-    const char *host_name[MAX_HOST_NAME_LENGTH];
-    const char *cpu[128];
-    const char *gpu[128];
-    double disk_memory[32768];
-} UserInfo; 
-
-UserInfo user;
-
-void info()
-{
-    UserInfo info;
-    printf(T_CYAN "[впешите своё имя]: \n" T_RESET);
-    scanf("%s\n", *info.user_name);    
-}
-
 int main(void)
 {
     set_keyword();
@@ -67,7 +49,7 @@ int main(void)
     while (true) {
 
         printf("user@host");
-        printf(T_CYAN "~" T_RESET);
+        printf(T_BLUE "~" T_RESET);
         printf("$ > ");
         if (scanf("%255s", console.command) != 1) {
             fprintf(stderr, T_RED "[err]: [ошибка ввода команды!]\n" T_RESET);
@@ -121,12 +103,12 @@ int main(void)
             editor();
         }
 
+        else if (strcmp(console.command, "dltinfo") == 0) {
+            print_fetch();
+        }
+
         else if (strcmp(console.command, "ver") == 0) {
             your_version();
-        }
-            
-        else if (strcmp(console.command, "dlt-fetch") == 0) {
-            print_fetch();
         }
 
         else if (strcmp(console.command, "help") == 0) {
@@ -135,7 +117,7 @@ int main(void)
             help();
         }
 
-        else if (strcmp(console.command, "refresh") == 0) {
+        else if (strcmp(console.command, "cls") == 0) {
             system("clear");
         }
 
@@ -172,7 +154,7 @@ int main(void)
             del();
         }
 
-        else if (strcmp(console.command, "display") == 0) {
+        else if (strcmp(console.command, "dcf") == 0) {
             printf(T_CYAN "[содержимое файла]\n" T_RESET);
             displayFile(console.fileName);
         }
