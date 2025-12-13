@@ -8,7 +8,7 @@ print(string.format('status: version=v.0.0.0.12-c %s', STATUS_VERSION))
 print(string.format('status: OS=OpenDelta Linux %s', STATUS_OS))
 
 local home = os.getenv("HOME") or ""
-local workdir = home .. "/OpenDelta/shell"
+local workdir = home .. "/OpenDelta/shell/"
 local gcc_cmd = "clang term.c commands.c files.c dltsh_base.c simple_comms.c -o term"
 local term_path = workdir .. "./term"
 local chmod_cmd = "chmod +x " .. term_path
