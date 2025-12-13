@@ -4,7 +4,7 @@ print("[ OK ]: compiling source code")
 local STATUS_VERSION = os.getenv("STATUS_VERSION") or ""
 local STATUS_OS = os.getenv("STATUS_OS") or ""
 
-print(string.format('status: version=v.0.0.0.11-c %s', STATUS_VERSION))
+print(string.format('status: version=v.0.0.0.12-c %s', STATUS_VERSION))
 print(string.format('status: OS=OpenDelta Linux %s', STATUS_OS))
 
 local home = os.getenv("HOME") or ""
