@@ -48,8 +48,8 @@ if has_lfs and lfs.chdir then
   local okc, err = lfs.chdir(workdir)
   if not okc then error("Failed to chdir: " .. tostring(err)) end
   run(gcc_cmd)
-  run("./bin/term", true)
-  run("chmod +x bin/term")
+  run("./term", true)
+  run("chmod +x ./term")
 else
   run("cd " .. workdir .. " && " .. gcc_cmd)
   run("cd " .. workdir .. " && ./bin/term", true)
