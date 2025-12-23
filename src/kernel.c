@@ -45,6 +45,7 @@ static void vga_putchar_at(char c, int x, int y) {
 
 static int cursor_x = 0;
 static int cursor_y = 0;
+
 static void vga_putchar(char c) {
     if (c == '\n') {
         cursor_x = 0;
@@ -159,15 +160,22 @@ void kmain(void) {
     vga_clear();
     vga_puts("Simple kernel starting...\n");
     if (base.magic != KERNEL_MAGIC) {
-        panic("bad magic");
+        panic("bad kernel magic");
     }
 
     if (base.version != KERNEL_VERSION) {
-        panic("bad version");
+        panic("bad kernel version");
     }
 
     sys_state.init = true;
-    vga_puts("System init OK\n");
+    
+    /* output base info */
+    vga_puts("System init: [ OK ]\n");
+    vga_puts("OS: OpenDelta(OS)\n");
+    vga_puts("OS version: v0.1\n");
+    vga_puts("Shell: dltsh(not working)\n");
+    vga_puts("Shell version: v.0.0.0.12-c");
+
     pit_init(10);
     for (;;) {
         tick();
@@ -176,6 +184,4 @@ void kmain(void) {
         }
         asm volatile ("hlt");
     }
-}
-
 }
