@@ -1,5 +1,5 @@
 section .data
-    kernel_path db '/home/deltadev/open-delta/kernel/', 0
+    kernel_path db '/home/user/OpenDelta/src/', 0             ; user замените на ваше имя
     kernel_path_len equ $ - kernel_path
 
     error_msg db '[ошибка]: ядро не найдено', 15
