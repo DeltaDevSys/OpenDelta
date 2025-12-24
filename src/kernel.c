@@ -4,30 +4,30 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define KERNEL_MAGIC 0x12345678
+#define KERNEL_MAGIC   0x12345678
 #define KERNEL_VERSION 0x00000001
 
 typedef struct {
     uint32_t magic;
     uint32_t version;
-} KenrelBase;
+} KernelBase;
 
 typedef struct {
-    bool init;
+    bool     init;
     uint32_t tick_count;
 } SystemState;
 
-static KenrelBase base = {
-    .magic = KERNEL_MAGIC,
+static KernelBase base = {
+    .magic   = KERNEL_MAGIC,
     .version = KERNEL_VERSION
 };
 
 static SystemState sys_state = {
-    .init = false,
+    .init       = false,
     .tick_count = 0
 };
 
-#define VGA_WIDTH 80
+#define VGA_WIDTH  80
 #define VGA_HEIGHT 25
 
 static uint16_t *const VGA_BUFFER = (uint16_t *)0xB8000;
@@ -156,7 +156,7 @@ static void vga_clear(void) {
     cursor_x = 0; cursor_y = 0;
 }
 
-void kmain(void) {
+void _start(void) {
     vga_clear();
     vga_puts("Simple kernel starting...\n");
     if (base.magic != KERNEL_MAGIC) {
@@ -168,8 +168,8 @@ void kmain(void) {
     }
 
     sys_state.init = true;
-    
-    /* output base info */
+   
+      /* output base info */
     vga_puts("System init: [ OK ]\n");
     vga_puts("OS: OpenDelta(OS)\n");
     vga_puts("OS version: v0.1\n");
@@ -182,6 +182,5 @@ void kmain(void) {
         for (volatile uint32_t i = 0; i < 1000000; i++) {
             asm volatile ("pause");
         }
-        asm volatile ("hlt");
     }
 }
