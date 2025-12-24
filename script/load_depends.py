@@ -6,11 +6,8 @@ import sys
 def install_packages():
     packages = [
         'clang',   
-        'gcc',     
         'nasm',    
         'lua',     
-        'rustc',   
-        'cargo'    
     ]
 
     if subprocess.run(['id', '-u'], capture_output=True, text=True).stdout.strip() != '0':
