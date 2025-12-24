@@ -1,52 +1,39 @@
-section .data
-    kernel_path db '/home/user/OpenDelta/src/', 0             ; user замените на ваше имя
-    kernel_path_len equ $ - kernel_path
+BITS 16
+ORG 0x7C00
 
-    error_msg db '[ошибка]: ядро не найдено', 15
-    error_msg_len equ $ - error_msg
+start:
+    cli
+    xor ax, ax
+    mov ds, ax
+    mov es, ax
 
-    success_msg db '[инфо]: ядро успешно загружено', 15
-    success_msg_len equ $ - success_msg
+    lgdt [gdt_descriptor]
+    mov eax, cr0
+    or  eax, 1
+    mov cr0, eax
+    jmp 0x08:pm_start
 
-section .text
-    global _start
+gdt_start:
+    dq 0
+    dw 0xFFFF, 0x0000, 0x00, 0x9A, 0xCF, 0x00
+    dw 0xFFFF, 0x0000, 0x00, 0x92, 0xCF, 0x00
+gdt_end:
 
-_start:
-    mov eax, 33     
-    mov ebx, kernel_path
-    mov ecx, 0      
-    int 0x80
+gdt_descriptor:
+    dw gdt_end - gdt_start - 1
+    dd gdt_start
 
-    test eax, eax
-    jnz kernel_not_found
+[BITS 32]
+pm_start:
+    mov ax, 0x10
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+    xor ebp, ebp
+    xor esp, esp
+    jmp 0x00100000
 
-    mov eax, 11     
-    mov ebx, kernel_path
-    mov ecx, 0      
-    mov edx, 0      
-    int 0x80
-
-    jmp exit_success
-
-kernel_not_found:
-    mov eax, 4      
-    mov ebx, 2      
-    mov ecx, error_msg
-    mov edx, error_msg_len
-    int 0x80
-
-    mov eax, 1      
-    mov ebx, 1      
-    int 0x80
-
-exit_success:
-    mov eax, 4      
-    mov ebx, 1      
-    mov ecx, success_msg
-    mov edx, success_msg_len
-    int 0x80
-
-    mov eax, 1      
-    xor ebx, ebx    
-    int 0x80
-
+times 510-($-$$) db 0
+dw 0xAA55
